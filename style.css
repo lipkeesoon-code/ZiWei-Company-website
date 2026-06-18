@@ -1,0 +1,1107 @@
+/* 全局变量和重置：紫府书院传统风格 */
+:root {
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    
+    /* 导航栏按钮颜色 */
+    --nav-home: #64759A;
+    --nav-about: #5F8DA0;
+    --nav-services: #A06F87;
+    --nav-chart: #C1736A;
+    --nav-news: #D4A36B;
+    --nav-contact: #A2AD71;
+
+    /* 联系区域颜色 */
+    --contact-bg-left: #A9B073; /* 橄榄绿色 */
+    --contact-bg-right: #FFFFFF;
+    --input-bg: #E0E0E0;
+    
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Noto Sans SC', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-image: url('设计风格/BG 001 .jpg'); /* 默认背景图 */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-image 0.5s ease;
+}
+
+body.bg-about {
+    background-image: url('设计风格/BG 006 .jpg');
+}
+
+body.bg-contact {
+    background-image: url('设计风格/BG 003 .jpg');
+    background-position: center 80px;
+    background-size: 100% calc(100vh - 80px);
+}
+
+/* 导航栏 */
+.navbar {
+    background-color: #FFFFFF;
+    padding: 0; /* 移除上下 padding，让 logo 顶天立地 */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    width: 100%;
+    padding: 0 5%; /* 左右留出 5% 的距离，让 Logo 往右移 */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 让按钮贴在底边 */
+}
+
+.logo img {
+    height: 108px; /* 较原来缩小 10% */
+    width: auto;
+    display: block; /* 移除底部空白间隙 */
+    margin: 8px 0; /* 上下留一点点的空间 */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* 从 10px 放大 */
+}
+
+.nav-links li {
+    display: flex;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px 27px;
+    border-radius: 12px 12px 0 0; /* 仅上方圆角，下方平角贴底边 */
+    font-size: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 平滑的回弹过渡动画 */
+    transform-origin: bottom center; /* 动画基准点设为底部，变大时会向上长 */
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-bottom: none; /* 移除底边框，使其更完美贴合 */
+}
+
+.nav-links a:hover {
+    opacity: 0.95;
+    transform: scale(1.05) translateY(-4px); /* 变大 5% 并且上弹 4px */
+    box-shadow: 2px 8px 15px rgba(0,0,0,0.3); /* 上弹时阴影加深变大，增加立体感 */
+}
+
+.nav-home { background-color: var(--nav-home); }
+.nav-about { background-color: var(--nav-about); }
+.nav-services { background-color: var(--nav-services); }
+.nav-chart { background-color: var(--nav-chart); }
+.nav-news { background-color: var(--nav-news); }
+.nav-contact { background-color: var(--nav-contact); }
+
+/* 主体区域通用样式 */
+.contact-section, .about-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.contact-section {
+    padding: 60px 8%; 
+    justify-content: flex-end; /* 联系我靠右 */
+}
+
+.about-section {
+    padding: 60px 5%; /* 边距减小，让整体靠左更多 */
+    justify-content: flex-start; /* 整个框靠左边 */
+}
+
+/* 关于我盒子 */
+.about-box {
+    display: flex;
+    max-width: 1250px; /* 拉长字框宽度 (原1100px) */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.about-image {
+    flex: 0.75; /* 稍微缩小图片比例，给文字留更多空间 */
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.about-content {
+    flex: 1.25; /* 文字区域比例加大 */
+    padding: 40px 50px; /* 稍微缩小一点内边距，挤出更多空间给文字 */
+    color: var(--text-dark);
+}
+
+.about-content h2 {
+    font-family: var(--font-sans);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--nav-about); /* 使用导航栏的关于我颜色 */
+    margin-bottom: 5px;
+}
+
+.about-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #4A6E7D;
+    margin-bottom: 20px; /* 原30px，缩短距离 */
+    border-bottom: 2px solid #E0E0E0;
+    padding-bottom: 10px;
+}
+
+.about-text-blocks p {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #555555; /* 约等于 66K 的灰色 */
+    font-weight: 700; /* 使用现代黑体的粗体，既不幼秀也不死板 */
+    font-family: var(--font-sans);
+}
+
+.about-text-blocks p strong {
+    color: var(--nav-about);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-bottom: 4px; /* 标题和正文稍微贴近一点 */
+}
+
+/* 服务项目盒子 */
+body.bg-services {
+    background-image: url('设计风格/BG 001 .jpg');
+    background-position: center;
+}
+
+.services-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* 整个大容器靠右 */
+    align-items: center;
+    padding: 60px 8%;
+}
+
+.services-container {
+    display: flex;
+    gap: 30px;
+    max-width: 950px;
+    width: 100%;
+    margin-right: 100px; /* 控制往左移动的距离，数字越大越靠左 */
+}
+
+.services-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+}
+
+/* 让左边紫微斗数稍微宽一点，右边两个盒子改窄一点 */
+.services-col:first-child {
+    flex: 1.05; /* 再次改小数值，让它进一步变窄 */
+}
+.services-col:last-child {
+    flex: 0.85; 
+}
+
+.service-card {
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 让卡片自动撑满垂直空间 */
+}
+
+.service-header {
+    background-color: #774f63;
+    color: white;
+    text-align: center;
+    padding: 8px; /* 减小 padding，让文字和框上下更紧密 */
+    line-height: 1.2; /* 缩小行距，避免字体自带上下留白 */
+    font-size: 2.5rem;
+    font-family: var(--font-serif);
+    font-weight: 700;
+}
+
+.service-body {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 3px solid #774f63;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 25px 30px;
+    flex: 1; /* 让白卡内容区自动拉长，对齐外框 */
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    margin-bottom: 10px; /* 改小底部间距，拉近上下两个项目的距离 */
+    line-height: 1.5;
+    font-family: var(--font-sans);
+}
+
+.item-title {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #774f63;
+    line-height: 1.2; /* 缩小标题本身的默认行高，减少下方的空隙 */
+}
+
+.item-desc {
+    font-size: 13pt;
+    font-weight: normal;
+    color: #555555;
+    margin-top: 0px; /* 取消顶部间距，让它往上贴紧标题 */
+    padding-left: 28px; /* 缩进对齐标题文字 */
+    line-height: 1.8; /* 稍微缩回一点行距，保持多行句子分开，但不至于把第一行推得太远 */
+}
+
+/* 联系盒子 */
+.contact-box {
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    background: transparent;
+}
+
+/* 左侧信息 */
+.contact-info {
+    flex: 1;
+    background-color: var(--contact-bg-left);
+    padding: 40px 50px;
+    color: #2b3a2b;
+}
+
+.contact-info h2 {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    color: #2F3E2F; /* 深色标题 */
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.contact-details {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    row-gap: 15px;
+    column-gap: 15px;
+}
+
+.contact-details p {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: contents;
+}
+
+.align-label {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 右侧表单 */
+.contact-form-container {
+    flex: 1.2;
+    background-color: var(--contact-bg-right);
+    padding: 40px 50px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-family: var(--font-sans);
+    color: var(--text-dark);
+    transition: background-color 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+    font-weight: 500;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: #D0D0D0;
+}
+
+.form-group textarea {
+    min-height: 180px;
+    resize: none;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: var(--contact-bg-left);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.6);
+    padding: 12px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 1px 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.btn-submit:hover {
+    transform: scale(1.05) translateY(-4px);
+    background-color: #9DA36A;
+    box-shadow: 2px 8px 15px rgba(0,0,0,0.3);
+}
+
+/* 响应式 */
+@media (max-width: 860px) {
+    .contact-box, .about-box {
+        flex-direction: column;
+    }
+    .contact-form-container {
+        border-radius: 0 0 20px 20px;
+    }
+    .about-image {
+        max-height: 400px;
+    }
+    .about-content {
+        padding: 30px 20px;
+    }
+    .nav-links {
+        display: none; 
+    }
+}
+
+
+
+
+
+/* Chart CSS Ported from Junior */
+.top-purple-bar {
+    width: 378px;
+    height: 40px;
+    background-color: #8e8ebb;
+    flex-shrink: 0;
+}
+
+.square-chart {
+    width: auto;
+    height: auto;
+    background: #fff; /* The White Breathing Space */
+    padding: 6px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* Fix for Snapshot gray-layer bug */
+.capturing .square-chart {
+    box-shadow: none !important;
+}
+
+.chart-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 91.5px);
+    grid-template-rows: repeat(4, 110px);
+    width: 366px;
+    height: 440px;
+    border: 1px solid #CCCCCC;
+    background: #fff;
+    box-sizing: border-box;
+    position: relative; /* Fixed: Absolute children like flying-lines-layer will align to this grid */
+}
+
+.palace-box {
+    border: 1px solid #ccc;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2px 2px 2px 3px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Row Extra: Aa+ Row (Daily Data) */
+.aa-plus-row {
+    font-size: 11px;
+    color: var(--text-k63);
+    height: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.lr-day-item {
+    margin-right: 2px;
+}
+
+.lr-day-item.highlight-orange {
+    background-color: var(--orange-highlight);
+    color: var(--text-k63) !important;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+/* Row 1: Vertical Stars (Right-to-Left) */
+.p-row-1 {
+    height: 80px;
+    display: flex;
+    justify-content: flex-end; /* Start from right */
+    align-items: flex-start; /* Prevent stars from stretching vertically and blocking the center */
+    gap: 1px;
+    margin-bottom: 2px;
+    padding-top: 4px; /* Move stars away from top border */
+}
+
+.v-star-group {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 4px;
+    height: fit-content; /* Ensure hitbox only covers text */
+}
+
+.wifi-trigger {
+    cursor: pointer;
+}
+
+.palace-box.selected-red {
+    border: 2px solid #E60012 !important;
+    z-index: 10;
+}
+
+
+.dx-btn.active-period {
+    background-color: #F2EA00 !important; /* C5.86 M0 Y97 K0 */
+    border-radius: 2px;
+    padding: 0; /* Task 014: Tighten to just right */
+    display: inline-block;
+    line-height: 1;
+}
+
+
+
+.dx-palace-name {
+    color: #A51B20 !important; /* C18 M98 Y92 K8 */
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.year-slot {
+    flex: 1;
+    text-align: right;
+    padding-right: 4px;
+}
+
+.dx-year {
+    font-size: 12px;
+    color: #333;
+    font-weight: 700;
+}
+
+.dx-age-container {
+    min-width: 25px;
+    text-align: right;
+}
+
+.dx-age {
+    font-size: 11px;
+    color: #666;
+    font-weight: 700;
+}
+
+.color-purple { color: #9b59b6; } /* C60 M77 Y0 K0 */
+.color-sunmoon { color: #E333FF; } /* C11 M80 Y0 K0 Sun/Moon Pink */
+.color-pink { color: #ff78cb; }
+
+/* Task 010: SiHua Styles (13px) */
+.sh-lu   { color: #3FB532; font-size: 13px; line-height: 1; display: inline-block; margin-top: 0px; } /* C76 M0 Y100 K0 Green */
+.sh-quan { color: #1C77FC; font-size: 13px; line-height: 1; display: inline-block; margin-top: 0px; } /* C88 M52 Y1 K0 Blue */
+.sh-ke   { color: #F5A832; font-size: 13px; line-height: 1; display: inline-block; margin-top: 0px; } /* C1 M36 Y87 K0 Orange */
+.sh-ji   { color: #E60012; font-size: 13px; line-height: 1; display: inline-block; margin-top: 0px; } /* C0 M99 Y100 K0 Red */
+
+/* Task 010a: ZiHua (Self-Transformation) 13px Circular Icons */
+.zihua-circle {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin-top: 0px;
+    vertical-align: top;
+    object-fit: contain; /* Ensure the img fits correctly */
+}
+
+/* Row 2: DaXian / LiuNian Names (Deep Red) */
+.p-row-2 {
+    height: 14px;
+    display: flex;
+    justify-content: center; /* Keep DaXian name centered */
+    align-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #b21b3d;
+    margin-bottom: 2px;
+    padding: 0 4px;
+    position: relative;
+}
+
+.p2-dx-name { visibility: hidden; }
+.p2-dx-name.visible { visibility: visible; }
+
+.p2-ln-name {
+    visibility: hidden;
+    position: absolute;
+    right: 2px;
+}
+.p2-ln-name.visible { visibility: visible; }
+
+.dx-palace-name, .ln-palace-name, .liu-palace-b {
+    color: var(--deep-red) !important;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.liu-year-c {
+    font-size: 10px;
+    color: var(--text-k63);
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.liu-month-d {
+    color: var(--deep-red);
+    padding: 0 4px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.highlight-orange {
+    background-color: var(--orange-highlight) !important;
+    padding: 0 4px;
+    border-radius: 4px;
+    display: inline-block;
+    line-height: normal;
+}
+
+.deep-red-text {
+    color: var(--deep-red) !important;
+}
+
+.active-ln-year {
+    background-color: #F2EA00 !important;
+    color: #000 !important;
+    border-radius: 2px;
+    padding: 0; /* Task 014: Tighten to just right */
+    display: inline-block;
+}
+
+.p-row-3 .dx-year.dimmed-ln-years {
+    color: rgba(0,0,0,0.14) !important; /* K14 Gray */
+}
+
+/* Row 3: Stem (13px) + DX Age (11px) + Year (Hidden) */
+.p-row-3 {
+    height: 16px;
+    display: flex;
+    justify-content: center; /* Center the range digits */
+    align-items: center;
+    font-size: 11px;
+    color: #5d5d5d; /* K63 Gray */
+    margin-bottom: 0px; 
+    position: relative;
+}
+
+.p-row-3 .stem { 
+    font-size: 13px; 
+    font-weight: 700; 
+    width: 14px; 
+    text-align: left;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+}
+.p-row-3 .dx-label { 
+    width: auto; 
+    min-width: 32px; 
+    text-align: center; 
+    white-space: nowrap; 
+    letter-spacing: -0.2px;
+}
+.current-dx-hint {
+    color: #9c3eb0 !important; /* Vibrant Purple */
+    font-weight: 900 !important;
+}
+.p-row-3 .year-slot { 
+    width: auto; 
+    font-size: 10px !important;
+    color: #5d5d5d !important;
+    font-weight: 400 !important;
+    position: absolute;
+    right: 1px; 
+    text-align: right;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    padding-right: 0 !important;
+} 
+.p-row-3 .dx-year { 
+    visibility: visible;
+    font-weight: 400 !important;
+    color: #5d5d5d !important;
+    font-size: 10px !important;
+}
+
+/* Row 4: Branch (13px) + Palace Name (13px) + Info (11px) */
+.p-row-4 {
+    height: 16px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #5d5d5d; 
+    position: relative;
+}
+
+.p-row-4 .branch { 
+    width: 14px; 
+    text-align: left; 
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+}
+.p-row-4 .p-name { 
+    width: 100%; 
+    text-align: center; 
+}
+.p-row-4 .right-info { 
+    min-width: 15px; 
+    text-align: right; 
+    font-size: 10px !important; 
+    font-weight: 400 !important;
+    color: #5d5d5d !important;
+    position: absolute;
+    right: 1px; 
+    letter-spacing: -0.5px;
+}
+.dx-age { 
+    visibility: visible; 
+    font-weight: 400 !important;
+    color: #5d5d5d !important;
+    font-size: 10px !important;
+}
+
+.deep-red-text {
+    color: #C1161D; /* C18 M98 Y92 K8 Deep Red */
+}
+
+.gender-m {
+    color: #00AEEF; /* C100 M0 Y0 K0 Blue */
+}
+
+.gender-f {
+    color: #EC008C; /* C0 M100 Y0 K0 Pink */
+}
+
+.bg-sanfang {
+    background-color: #E8E8FF !important; /* CMYK 9/9/0/0 Light Purple */
+}
+
+.gender-male { 
+    color: #00AEEF; /* C100 M0 Y0 K0 */
+}
+
+.gender-female { 
+    color: #EC008C; /* C0 M100 Y0 K0 */
+}
+
+/* Info Grid below chart (2 Columns x 4 Rows) */
+.info-grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, auto);
+    gap: 8px 30px;
+    padding: 15px 35px;
+    font-size: 13px;
+    background: #fdfdfd;
+    font-weight: 400; /* Normal weight for whole grid */
+}
+
+.info-item {
+    font-weight: 400 !important;
+}
+
+.info-item b {
+    font-weight: 400 !important;
+}
+
+/* Desktop Layout for Chart Section */
+body.bg-chart::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('img/BG_007.jpg');
+    background-size: cover;
+    background-position: center;
+    transform: scaleX(-1);
+    z-index: -1;
+}
+
+.chart-section {
+    display: flex;
+    justify-content: flex-end !important; /* 改回 flex-end 让它靠右 */
+    align-items: flex-start;
+    padding: 40px 5%;
+    padding-right: calc(5% + 130px) !important; /* 增加右边距，使其不完全靠右，而是往左退大约一个按钮的距离（对齐最新消息） */
+    gap: 20px;
+    flex: 1;
+}
+
+.chart-input-panel, .chart-display-panel {
+    border: 3px solid #C1736A;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.input-panel-header, .chart-display-header {
+    background: #C1736A;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.input-panel-header {
+    font-size: 1.92rem; /* 20% smaller than 2.4rem */
+}
+
+.input-panel-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.input-group input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #dce3e7;
+    border-radius: 4px;
+}
+
+.input-group select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #dce3e7;
+    border-radius: 4px;
+    flex: 1;
+}
+
+.gender-btn {
+    padding: 8px 20px;
+    background: #e2e6ea;
+    color: #b0b0b0;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.gender-btn input {
+    display: none;
+}
+
+/* ??? */
+.gender-btn.active.male-btn {
+    background: #e2e6ea;
+    color: #00AEEF; /* ?? */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* ??? */
+.gender-btn.active.female-btn {
+    background: #e2e6ea;
+    color: #EC008C; /* ?? */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-calculate {
+    width: 100%;
+    padding: 10px;
+    background: #C1736A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-calculate:hover {
+    background: #A05B53;
+}
+
+.chart-grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 91.5px);
+    grid-template-rows: repeat(4, 110px);
+    width: 366px;
+    height: 440px;
+    border: 1px solid #CCCCCC;
+    background: #fff;
+    box-sizing: border-box;
+    position: relative;
+    transform: scale(1.4); /* 放大 40% */
+    transform-origin: top left;
+}
+
+.square-chart {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    margin: 10px;
+    width: 513px;  /* 366 * 1.4 = 512.4 */
+    height: 616px; /* 440 * 1.4 = 616 */
+}
+
+
+
+
+
+/* Center Area Fix */
+}
+
+/* Task 010b: Energy Arrows SVG Container */
+.energy-arrows-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Below info text, above background */
+}
+
+.energy-line {
+    stroke-width: 1.1; /* Reduced to ~80% of 1.4 */
+    fill: none;
+    stroke-linecap: round;
+}
+
+/* Task 010c: Flying Lines SVG Layer */
+.flying-lines-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.flying-line {
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.ji-chong-line {
+    stroke-width: 2;
+    stroke-dasharray: 6,4;
+}
+
+.brand-signature {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    max-width: 145px;
+    height: auto;
+    opacity: 0.95;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.grey-bg-logo {
+    position: absolute;
+    bottom: 25px;
+    right: 5%;
+    width: 112px;
+    height: auto;
+    mix-blend-mode: multiply;
+    opacity: 0.57;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Task 010b: Energy Arrows SVG Container */
+.energy-arrows-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Below info text, above background */
+}
+
+.energy-line {
+    stroke-width: 1.1; /* Reduced to ~80% of 1.4 */
+    fill: none;
+    stroke-linecap: round;
+}
+
+/* Task 010c: Flying Lines SVG Layer */
+.flying-lines-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.flying-line {
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.ji-chong-line {
+    stroke-width: 2;
+    stroke-dasharray: 6,4;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.c-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: #444;
+    text-align: left;
+    font-weight: 400; /* Force normal weight */
+}
+
+.nav-icon {
+    display: none;
+}
+
+.center-area {
+    grid-area: 2 / 2 / 4 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 15px 10px 10px 12px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.c-row {
+    white-space: normal; /* Allow text to wrap if it exceeds the container width */
+    overflow-wrap: break-word; /* Ensure long words (like English names) break to fit */
+    word-break: break-all; /* Safety for very narrow spaces */
+    line-height: 1.3; /* Better spacing between wrapped lines */
+    max-width: 100%; /* Ensure content stays within the 183px center area (minus 10px padding each side) */
+    font-weight: 400 !important;
+}
+
+.c-row span {
+    font-weight: 400 !important;
+}
+
