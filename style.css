@@ -204,7 +204,7 @@ body.bg-services {
     display: flex;
     justify-content: flex-end; /* 整个大容器靠右 */
     align-items: center;
-    padding: 60px 8%;
+    padding: 60px calc(8% + 50px) 60px 8%; /* 往右调：把原来右侧推向左边的垫子从 100px 缩小到了 50px */
 }
 
 .services-container {
@@ -212,7 +212,6 @@ body.bg-services {
     gap: 30px;
     max-width: 950px;
     width: 100%;
-    margin-right: 100px; /* 控制往左移动的距离，数字越大越靠左 */
 }
 
 .services-col {
@@ -237,6 +236,8 @@ body.bg-services {
     display: flex;
     flex-direction: column;
     flex: 1; /* 让卡片自动撑满垂直空间 */
+    border: 3px solid #774f63; /* 将边框移到最外层容器，防止被裁切 */
+    box-sizing: border-box;
 }
 
 .service-header {
@@ -252,11 +253,9 @@ body.bg-services {
 
 .service-body {
     background-color: rgba(255, 255, 255, 0.95);
-    border: 3px solid #774f63;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
     padding: 25px 30px;
     flex: 1; /* 让白卡内容区自动拉长，对齐外框 */
+    box-sizing: border-box;
 }
 
 .service-list {
@@ -282,9 +281,9 @@ body.bg-services {
     font-size: 13pt;
     font-weight: normal;
     color: #555555;
-    margin-top: 0px; /* 取消顶部间距，让它往上贴紧标题 */
+    margin-top: -6px; /* 使用负间距把第一句拉上去贴紧标题 */
     padding-left: 28px; /* 缩进对齐标题文字 */
-    line-height: 1.8; /* 稍微缩回一点行距，保持多行句子分开，但不至于把第一行推得太远 */
+    line-height: 2.4; /* 大幅拉开行距，让句子和句子之间距离变远 */
 }
 
 /* 联系盒子 */

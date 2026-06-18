@@ -1,3 +1,6 @@
+Domains
+zi-wei-company-website.vercel.app
+
 ~ 客户如果按了发送消息，是真实要发去我的  lipkeesoon@hotmail.com  。。。发送消息 《发后要给一个成功发送的声音 。。或 按钮字，会变成功发送
 
 ~当鼠标在上头时，按钮会有一点动画，可能是变大 ，或上弹一点点  的动画
@@ -28,4 +31,9 @@
 WhatsApp留言:0122854210
 邮箱:lipkeesoon@hotmail.com
 地址:马口，森美兰 Bahau, Negeri Sembilan
+
+
+
+Domains
+zi-wei-company-website.vercel.app
 
