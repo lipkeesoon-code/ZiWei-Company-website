@@ -258,9 +258,12 @@ body.bg-services {
     box-sizing: border-box;
 }
 
-/* 针对左边“紫微斗数”固定白卡高度为 670px */
+/* 针对左边“紫微斗数”固定白卡高度，并防止外边框被拉长导致底部出现空隙 */
+.services-col:first-child .service-card {
+    flex: none;
+}
 .services-col:first-child .service-body {
-    height: 650px;
+    height: 600px;
     flex: none;
 }
 
