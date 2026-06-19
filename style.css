@@ -264,17 +264,16 @@ body.bg-services {
     flex: none;
 }
 .services-col:first-child .service-body {
-    height: 560px; /* 减了 60px (原 620px) */
+    height: 590px; /* 原本 620px，减了 30px */
     flex: none;
 }
 
-/* 针对右上角“滴天髓八字”固定白卡高度 */
+/* 针对右边两个盒子的高度比例分配 */
 .services-col:last-child .service-card:first-child {
-    flex: none;
+    flex: 0.9; /* 让右上角“滴天髓八字”稍微变矮一点，把空间让给右下角 */
 }
-.services-col:last-child .service-card:first-child .service-body {
-    height: 205px; /* 减了大约 60px */
-    flex: none;
+.services-col:last-child .service-card:last-child {
+    flex: 1.1; 
 }
 
 .service-list {
