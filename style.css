@@ -260,7 +260,7 @@ body.bg-services {
 
 /* 针对左边“紫微斗数”固定白卡高度为 670px */
 .services-col:first-child .service-body {
-    height: 670px;
+    height: 650px;
     flex: none;
 }
 
