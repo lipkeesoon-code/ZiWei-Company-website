@@ -210,7 +210,7 @@ body.bg-services {
 .services-container {
     display: flex;
     gap: 30px;
-    max-width: 950px;
+    max-width: 1050px;
     width: 100%;
 }
 
@@ -221,12 +221,12 @@ body.bg-services {
     flex: 1;
 }
 
-/* 让左边紫微斗数稍微宽一点，右边两个盒子改窄一点 */
+/* 调整左右比例，稍微增加右边盒子的宽度以容纳文字 */
 .services-col:first-child {
-    flex: 1.05; /* 再次改小数值，让它进一步变窄 */
+    flex: 1.05; 
 }
 .services-col:last-child {
-    flex: 0.85; 
+    flex: 0.95; 
 }
 
 .service-card {
