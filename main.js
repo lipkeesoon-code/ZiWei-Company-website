@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(response => response.json())
             .then(data => {
-                if(data.success || data.message) {
+                if(data.success === "true" || data.success === true) {
                     // 发送成功，改变按钮文字和颜色
                     submitBtn.innerText = '成功发送 ✓';
                     submitBtn.style.backgroundColor = '#6e8a5b'; // 稍微深一点的绿色
@@ -100,12 +100,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.style.backgroundColor = originalBg;
                     }, 4000);
                 } else {
-                    throw new Error('提交失败');
+                    // 处理尚未激活的情况
+                    if(data.message && (data.message.includes('activate') || data.message.includes('Action Required'))) {
+                        alert('【重要】首次使用需要激活！\n请登录 lipkeesoon@hotmail.com（检查收件箱或垃圾邮件），找到 FormSubmit 发来的激活邮件并点击激活。');
+                    }
+                    throw new Error(data.message || '提交失败');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                submitBtn.innerText = '发送失败，请重试';
+                submitBtn.innerText = '请先去邮箱点击激活';
                 submitBtn.style.backgroundColor = '#d9534f';
                 submitBtn.style.color = '#FFF';
                 submitBtn.style.opacity = '1';

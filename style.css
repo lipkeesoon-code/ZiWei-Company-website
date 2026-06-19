@@ -279,7 +279,7 @@ body.bg-services {
 
 .item-desc {
     font-size: 13pt;
-    font-weight: normal;
+    font-weight: 700;
     color: #555555;
     margin-top: -6px; /* 使用负间距把第一句拉上去贴紧标题 */
     padding-left: 28px; /* 缩进对齐标题文字 */
