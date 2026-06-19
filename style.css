@@ -283,7 +283,7 @@ body.bg-services {
     color: #555555;
     margin-top: -6px; /* 使用负间距把第一句拉上去贴紧标题 */
     padding-left: 28px; /* 缩进对齐标题文字 */
-    line-height: 2.4; /* 大幅拉开行距，让句子和句子之间距离变远 */
+    line-height: 1.6; /* 缩小行距，让整个盒子变矮 */
 }
 
 /* 联系盒子 */
