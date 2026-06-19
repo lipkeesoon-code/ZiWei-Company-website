@@ -265,7 +265,7 @@ body.bg-services {
 }
 
 .service-list li {
-    margin-bottom: 14px; /* 改小底部间距，拉近上下两个项目的距离 */
+    margin-bottom: 10px; /* 改小底部间距，拉近上下两个项目的距离 */
     line-height: 1.5;
     font-family: var(--font-sans);
 }
@@ -283,7 +283,7 @@ body.bg-services {
     color: #555555;
     margin-top: -6px; /* 使用负间距把第一句拉上去贴紧标题 */
     padding-left: 28px; /* 缩进对齐标题文字 */
-    line-height: 1.6; /* 缩小行距，防止换行时产生过大空隙，整体框也会变矮 */
+    line-height: 2.4; /* 大幅拉开行距，让句子和句子之间距离变远 */
 }
 
 /* 联系盒子 */
