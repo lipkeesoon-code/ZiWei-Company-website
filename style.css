@@ -210,7 +210,7 @@ body.bg-services {
 .services-container {
     display: flex;
     gap: 30px;
-    max-width: 1050px;
+    max-width: 950px; /* 从 1050px 剪短了 100px */
     width: 100%;
 }
 
@@ -263,7 +263,7 @@ body.bg-services {
     flex: none;
 }
 .services-col:first-child .service-body {
-    height: 650px;
+    height: 620px;
     flex: none;
 }
 
@@ -274,7 +274,7 @@ body.bg-services {
 }
 
 .service-list li {
-    margin-bottom: 10px; /* 改小底部间距，拉近上下两个项目的距离 */
+    margin-bottom: 6px; /* 【重点调整】这里控制上下项目的距离。原来是 10px，现在改为 0px。如果要更近，可以改负数（如 -5px、-10px）；如果要远一点，就改正数（如 5px、15px） */
     line-height: 1.5;
     font-family: var(--font-sans);
 }
