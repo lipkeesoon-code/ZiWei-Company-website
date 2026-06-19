@@ -1365,7 +1365,67 @@ function renderMainBoard(record) {
 // --- Navigation & Global Actions ---
 UI.navItems.forEach(item => item.addEventListener('click', () => item.dataset.view && switchView(item.dataset.view)));
 
+// 检查登入状态
+const initMemberStatus = () => {
+    const loginForm = document.getElementById('member-login-form');
+    const loggedInStatus = document.getElementById('member-logged-in-status');
+    if (localStorage.getItem('ziwi_unlocked')) {
+        if (loginForm) loginForm.style.display = 'none';
+        if (loggedInStatus) loggedInStatus.style.display = 'block';
+    } else {
+        if (loginForm) loginForm.style.display = 'flex';
+        if (loggedInStatus) loggedInStatus.style.display = 'none';
+    }
+};
+
+// 页面加载或切换视图时初始化
+document.addEventListener('DOMContentLoaded', initMemberStatus);
+// 防错，立刻执行一次
+initMemberStatus();
+
+const btnMemberLogin = document.getElementById('btn-member-login');
+if (btnMemberLogin) {
+    btnMemberLogin.addEventListener('click', () => {
+        const inputStr = document.getElementById('member-secret-input').value.trim();
+        if (inputStr === "紫机一阳") {
+            localStorage.setItem('ziwi_unlocked', 'true');
+            alert("✅ 登入成功！您已解锁导师/学生权限，可无限次使用排盘功能！");
+            initMemberStatus();
+        } else {
+            alert("❌ 暗语错误，请重新输入。");
+        }
+    });
+}
+
+const btnMemberLogout = document.getElementById('btn-member-logout');
+if (btnMemberLogout) {
+    btnMemberLogout.addEventListener('click', () => {
+        if (confirm("确定要登出会员吗？登出后将受到排盘次数限制。")) {
+            localStorage.removeItem('ziwi_unlocked');
+            initMemberStatus();
+        }
+    });
+}
+
 UI.btnSaveChart.addEventListener('click', () => {
+    // 普通访客使用次数限制 (20天内最多10次)
+    if (!localStorage.getItem('ziwi_unlocked')) {
+        let usage = JSON.parse(localStorage.getItem('ziwi_usage')) || [];
+        const now = Date.now();
+        const twentyDaysMs = 20 * 24 * 60 * 60 * 1000;
+        
+        // 过滤掉20天前的记录
+        usage = usage.filter(time => now - time < twentyDaysMs);
+        
+        if (usage.length >= 10) {
+            alert("普通访客限制：20天内仅能排盘10次。您已达到上限，请稍后几天再试或联系导师。");
+            return;
+        }
+        
+        usage.push(now);
+        localStorage.setItem('ziwi_usage', JSON.stringify(usage));
+    }
+
     let targetId = State.lastUsedGroupId || State.defaultGroupId;
     if (!targetId && State.groups.length > 0) targetId = State.groups[0].id;
     if (!targetId) return alert("请先在资料页设置一个群组");
