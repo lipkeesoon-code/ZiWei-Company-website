@@ -212,6 +212,7 @@ body.bg-services {
     gap: 30px;
     max-width: 950px; /* 从 1050px 剪短了 100px */
     width: 100%;
+    margin-top: -15px; /* 【重点调整】整体向上移动，数值越负（如 -20px, -30px）移得越上 */
 }
 
 .services-col {
