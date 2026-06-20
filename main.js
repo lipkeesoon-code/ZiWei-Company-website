@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 导航栏切换逻辑
     const navLinks = document.querySelectorAll('.nav-links a');
     const sections = {
+        'home': document.getElementById('section-home'),
         'about': document.getElementById('section-about'),
         'services': document.getElementById('section-services'),
         'chart': document.getElementById('section-chart'),
@@ -31,8 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sections[target].style.display = 'flex';
                 
                 // 切换背景
-                document.body.classList.remove('bg-about', 'bg-services', 'bg-chart', 'bg-contact');
-                if (target === 'about') {
+                document.body.classList.remove('bg-home', 'bg-about', 'bg-services', 'bg-chart', 'bg-contact');
+                if (target === 'home') {
+                    document.body.classList.add('bg-home');
+                } else if (target === 'about') {
                     document.body.classList.add('bg-about');
                 } else if (target === 'services') {
                     document.body.classList.add('bg-services');
@@ -48,9 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 默认触发一次 "关于我" 页面展示 (根据用户最新请求)
-    const aboutLink = document.querySelector('.nav-about');
-    if (aboutLink) aboutLink.click();
+    // 默认触发一次 "主页" 页面展示
+    const homeLink = document.querySelector('.nav-home');
+    if (homeLink) homeLink.click();
 
     // 表单提交处理
     const contactForm = document.getElementById('contactForm');

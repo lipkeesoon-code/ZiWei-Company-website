@@ -41,6 +41,11 @@ body {
     transition: background-image 0.5s ease;
 }
 
+body.bg-home {
+    background-image: url('设计风格/BG 007 V2.jpg');
+    background-size: 100% 100%; /* 强行拉伸铺满全屏，达到压扁效果 */
+}
+
 body.bg-about {
     background-image: url('设计风格/BG 006 .jpg');
 }
@@ -115,10 +120,31 @@ body.bg-contact {
 .nav-contact { background-color: var(--nav-contact); }
 
 /* 主体区域通用样式 */
-.contact-section, .about-section {
+.home-section, .contact-section, .about-section {
     flex: 1;
     display: flex;
     align-items: center;
+}
+
+.home-section {
+    justify-content: center;
+    /* 取消之前的 padding-bottom，改用 relative 定位更精准 */
+}
+
+.home-slogan-img {
+    max-width: 85%;
+    width: 780px; /* 原为 650px，放大了 20% */
+    height: auto;
+    position: relative;
+    left: 250px; /* 根据要求设为 250px，向右微调 */
+    top: 80px;   /* 向上移 */
+    filter: drop-shadow(2px 4px 8px rgba(255,255,255,0.5)); /* 轻微发光阴影以突出文字 */
+    animation: fadeInSlogan 1.2s ease-out;
+}
+
+@keyframes fadeInSlogan {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .contact-section {
@@ -918,17 +944,15 @@ body.bg-chart::before {
     display: none;
 }
 
-/* ??? */
 .gender-btn.active.male-btn {
     background: #e2e6ea;
-    color: #00AEEF; /* ?? */
+    color: #00AEEF; /* 男字蓝色 */
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* ??? */
 .gender-btn.active.female-btn {
     background: #e2e6ea;
-    color: #EC008C; /* ?? */
+    color: #EC008C; /* 女字粉色 */
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -943,10 +967,13 @@ body.bg-chart::before {
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .btn-calculate:hover {
     background: #A05B53;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 2px 5px 12px rgba(0,0,0,0.2);
 }
 
 .chart-grid-container {
@@ -959,7 +986,7 @@ body.bg-chart::before {
     background: #fff;
     box-sizing: border-box;
     position: relative;
-    transform: scale(1.4); /* 放大 40% */
+    transform: scale(1.2); /* 缩小至 1.2倍，让高度更矮些 */
     transform-origin: top left;
 }
 
@@ -968,8 +995,8 @@ body.bg-chart::before {
     background: transparent;
     box-shadow: none;
     margin: 10px;
-    width: 513px;  /* 366 * 1.4 = 512.4 */
-    height: 616px; /* 440 * 1.4 = 616 */
+    width: 440px;  /* 366 * 1.2 = 439.2 */
+    height: 528px; /* 440 * 1.2 = 528 */
 }
 
 
