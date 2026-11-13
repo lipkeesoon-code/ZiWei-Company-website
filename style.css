@@ -127,8 +127,34 @@ body.bg-contact {
 }
 
 .home-section {
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
     /* 取消之前的 padding-bottom，改用 relative 定位更精准 */
+}
+
+.home-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 首页底部信息栏 */
+.home-footer-bar {
+    width: 100%;
+    background-color: #301523;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 1.5;
+    padding: 10px 2.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    z-index: 10;
 }
 
 .home-slogan-img {
